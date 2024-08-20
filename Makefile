@@ -34,7 +34,7 @@ base:
 
 .PHONY: clean
 clean:
-	find out -maxdepth 1 -mindepth 1 ! -name .gitkeep ! -name out -exec rm -rf {} +
+	find `pwd`/out -maxdepth 1 -mindepth 1 ! -name .gitkeep ! -name out -exec rm -rf {} +
 
 .PHONY: clean-containers
 clean-containers:
