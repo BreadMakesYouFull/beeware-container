@@ -6,8 +6,8 @@ BUILDER:=podman
 
 .PHONY: all
 all: clean base
-	podman rm -f beeware-build 2>/dev/null || true
 	# Build flatpak for testing without android emulator
+	podman rm -f beeware-build 2>/dev/null || true
 	podman run \
 		--privileged \
 		-it \
@@ -17,6 +17,7 @@ all: clean base
 		beeware-build bash -c \
 		'. /opt/venv/bin/activate ; cd /out ; cp -r /in/* . ; ls build/*/linux/flatpak 2>/dev/null || briefcase create linux flatpak ; briefcase build linux flatpak ; briefcase package linux flatpak'
 	# Build apk for android
+	podman rm -f beeware-build 2>/dev/null || true
 	podman run \
 		--privileged \
 		-it \
